@@ -65,6 +65,7 @@ const makeFile = function(filename, answers) {
   fs.writeFile(filename, answers, "utf8", (err) => err ? console.log(err) : console.log("Generated logo.svg" ));
 }
 
+// function that takes answers, destructures, checks shape, and then creates new instance of shape classes to allow use of render
 const svgText = function(answers) {
   const { shapecolor, textcolor, text, shape } = answers;
   shapecolor = colorArr.includes(shapecolor.toLowerCase()) ? shapecolor : `#${shapecolor}`;
@@ -76,7 +77,7 @@ const svgText = function(answers) {
   } else {
     newSVG = new Triangle(text, textcolor, shapecolor)
   }
-  return newSVG.generateSVG()
+  return newSVG.render()
 }
 
 const init = function () {
