@@ -11,7 +11,7 @@ const colorObj = {
 // converts to array of just the color keywords in lower case
 const colorArr = Object.keys(colorObj).map(key => key.toLowerCase());
 
-// regular expression for only letters and numbers, either 3 or 6 characters long
+// regular expression for only letters and numbers, either 3 or 6 characters long. ^starts string, character parameters in [], length requirements in {}, | means or, $ ends string
 const regex = /^([a-fA-F0-9]{3}|[a-fA-F0-9]{6})$/;
 
 // array of objects for inquirer questions
@@ -20,6 +20,7 @@ const questions = [
     type: 'input',
     message: 'Enter up to three characters for your logo, please.',
     name: 'text',
+    // validate length
     validate: function(input) {
       if (input.length < 4 && input.length > 0) {
       return true
@@ -32,6 +33,7 @@ const questions = [
     type: 'input',
     message: 'Please enter a JS color keyword or a hexadecimal code for a number (skipping the #).',
     name: 'textColor',
+    // validate color input
     validate: function(input) {
       if (colorArr.includes(input.toLowerCase()) || regex.test(input)) {
         return true;
@@ -51,6 +53,7 @@ const questions = [
     type: 'input',
     message: 'Please select a color, either with a color keyword or a hexadecimal number, for your shape',
     name: 'shapeColor',
+    // validate color input
     validate: function(input) {
       if (colorArr.includes(input.toLowerCase()) || regex.test(input)) {
         return true;
@@ -61,6 +64,7 @@ const questions = [
   }
 ]
 
+// makes a file
 const makeFile = function(filename, answers) {
   fs.writeFile(filename, answers, "utf8", (err) => err ? console.log(err) : console.log("Generated logo.svg" ));
 }
