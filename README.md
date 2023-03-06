@@ -5,6 +5,8 @@
 
 This project was an exploration into how SVG files work, as well as into continued practice with Node.js. It also serves as a first repo implementing tests to test the results of my work, utilizing the npm package Jest.
 
+Here is a [video demo](https://drive.google.com/file/d/1Kj2CdJPRXm4MY9v8YaDRMjqaRpjYsvrE/view).
+
 ## Installation
 
 You will need to clone the github repo, make sure that you have Node installed(pre version 18) as well as inquirer (pre version 9).
