@@ -31,7 +31,7 @@ const questions = [
   {
     type: 'input',
     message: 'Please enter a JS color keyword or a hexadecimal code for a number (skipping the #).',
-    name: 'textcolor',
+    name: 'textColor',
     validate: function(input) {
       if (colorArr.includes(input.toLowerCase()) || regex.test(input)) {
         return true;
@@ -50,7 +50,7 @@ const questions = [
   {
     type: 'input',
     message: 'Please select a color, either with a color keyword or a hexadecimal number, for your shape',
-    name: 'shapecolor',
+    name: 'shapeColor',
     validate: function(input) {
       if (colorArr.includes(input.toLowerCase()) || regex.test(input)) {
         return true;
@@ -67,17 +67,17 @@ const makeFile = function(filename, answers) {
 
 // function that takes answers, destructures, checks shape, and then creates new instance of shape classes to allow use of render
 const svgText = function(answers) {
-  const { shapecolor, textcolor, text, shape } = answers;
-  shapecolor = colorArr.includes(shapecolor.toLowerCase()) ? shapecolor : `#${shapecolor}`;
+  const { shapeColor, textColor, text, shape } = answers;
+  shapeColor = colorArr.includes(shapeColor.toLowerCase()) ? shapeColor : `#${shapeColor}`;
   let newSVG;
   if (shape === "circle") {
-    newSVG = new Circle(text, textcolor, shapecolor)
+    newSVG = new Circle(text, textColor, shapeColor)
   } else if (shape === "square") {
-    newSVG = new Square(text, textcolor, shapecolor)
+    newSVG = new Square(text, textColor, shapeColor)
   } else {
-    newSVG = new Triangle(text, textcolor, shapecolor)
+    newSVG = new Triangle(text, textColor, shapeColor)
   }
-  return newSVG.render()
+  return newSVG.generateSVG()
 }
 
 const init = function () {
